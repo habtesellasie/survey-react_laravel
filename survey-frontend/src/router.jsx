@@ -1,10 +1,12 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+import DefaultLayout from './components/DefaultLayout';
+import GuestLayout from './components/GuestLayout';
 import Dashboard from './views/Dashboard';
-import Surveys from './views/Surveys';
 import Login from './views/Login';
 import Signup from './views/Signup';
-import GuestLayout from './components/GuestLayout';
-import DefaultLayout from './components/DefaultLayout';
+import SurveyPublicView from './views/SurveyPublicView';
+import Surveys from './views/Surveys';
+import SurveyView from './views/SurveyView';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
         path: '/surveys',
         element: <Surveys />,
       },
+      {
+        path: '/surveys/create',
+        element: <SurveyView />,
+      },
+      {
+        path: '/surveys/:id',
+        element: <SurveyView />,
+      },
     ],
   },
   {
@@ -38,6 +48,14 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
     ],
+  },
+  {
+    path: '/survey/public/:slug',
+    element: <SurveyPublicView />,
+  },
+  {
+    path: '*',
+    element: '<h1>Page Not Found</h1>',
   },
 ]);
 
