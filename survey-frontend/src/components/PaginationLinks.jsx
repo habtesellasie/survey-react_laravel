@@ -41,7 +41,7 @@ export default function PaginationLinks({ meta, onPageClick }) {
               className='isolate inline-flex -space-x-px rounded-md shadow-sm'
               aria-label='Pagination'
             >
-              {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
+              {/* Current: "z-10 bg-blue-50 border-blue-500 text-blue-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
               {meta.links &&
                 meta.links.map((link, ind) => (
                   <a
@@ -54,7 +54,7 @@ export default function PaginationLinks({ meta, onPageClick }) {
                       (ind === 0 ? 'rounded-l-md ' : '') +
                       (ind === meta.links.length - 1 ? 'rounded-r-md ' : '') +
                       (link.active
-                        ? 'border-indigo-500 bg-indigo-50 text-indigo-600 '
+                        ? 'border-blue-500 bg-blue-50 text-blue-600 '
                         : '')
                     }
                     dangerouslySetInnerHTML={{ __html: link.label }}

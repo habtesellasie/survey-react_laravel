@@ -15,7 +15,7 @@ export default function GuestLayout() {
           <div>
             <img
               className='mx-auto h-12 w-auto'
-              src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600'
+              src='https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600'
               alt='Your Company'
             />
           </div>

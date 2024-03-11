@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 export default function TButton({
-  color = 'indigo',
+  color = 'blue',
   to = '',
   circle = false,
   href = '',
@@ -24,8 +24,8 @@ export default function TButton({
     classes = [...classes, 'transition-colors'];
 
     switch (color) {
-      case 'indigo':
-        classes = [...classes, 'text-indigo-500', 'focus:border-indigo-500'];
+      case 'blue':
+        classes = [...classes, 'text-blue-500', 'focus:border-blue-500'];
         break;
       case 'red':
         classes = [...classes, 'text-red-500', 'focus:border-red-500'];
@@ -34,12 +34,12 @@ export default function TButton({
     classes = [...classes, 'text-white', 'focus:ring-2', 'focus:ring-offset-2'];
 
     switch (color) {
-      case 'indigo':
+      case 'blue':
         classes = [
           ...classes,
-          'bg-indigo-600',
-          'hover:bg-indigo-700',
-          'focus:ring-indigo-500',
+          'bg-blue-600',
+          'hover:bg-blue-700',
+          'focus:ring-blue-500',
         ];
         break;
       case 'red':

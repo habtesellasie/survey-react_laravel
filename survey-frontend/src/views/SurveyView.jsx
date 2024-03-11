@@ -151,7 +151,7 @@ export default function SurveyView() {
                   )}
                   <button
                     type='button'
-                    className='relative ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                    className='relative ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                   >
                     <input
                       type='file'
@@ -181,7 +181,7 @@ export default function SurveyView() {
                     setSurvey({ ...survey, title: ev.target.value })
                   }
                   placeholder='Survey Title'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
                 />
               </div>
               {/*Title*/}
@@ -203,7 +203,7 @@ export default function SurveyView() {
                     setSurvey({ ...survey, description: ev.target.value })
                   }
                   placeholder='Describe your survey'
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
                 ></textarea>
               </div>
               {/*Description*/}
@@ -224,7 +224,7 @@ export default function SurveyView() {
                   onChange={(ev) =>
                     setSurvey({ ...survey, expire_date: ev.target.value })
                   }
-                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                  className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
                 />
               </div>
               {/*Expire Date*/}
@@ -240,7 +240,7 @@ export default function SurveyView() {
                     onChange={(ev) =>
                       setSurvey({ ...survey, status: ev.target.checked })
                     }
-                    className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
+                    className='h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500'
                   />
                 </div>
                 <div className='ml-3 text-sm'>

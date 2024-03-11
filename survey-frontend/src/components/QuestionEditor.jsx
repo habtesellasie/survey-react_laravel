@@ -121,7 +121,7 @@ export default function QuestionEditor({
               onChange={(ev) =>
                 setModel({ ...model, question: ev.target.value })
               }
-              className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+              className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
             />
           </div>
           {/* Question Text */}
@@ -139,7 +139,7 @@ export default function QuestionEditor({
               name='questionType'
               value={model.type}
               onChange={onTypeChange}
-              className='mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
+              className='mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
             >
               {questionTypes.map((type) => (
                 <option value={type} key={type}>
@@ -166,7 +166,7 @@ export default function QuestionEditor({
             onChange={(ev) =>
               setModel({ ...model, description: ev.target.value })
             }
-            className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+            className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm'
           ></textarea>
         </div>
         {/*Description*/}
@@ -216,7 +216,7 @@ export default function QuestionEditor({
                       px-2
                       text-xs
                       border border-gray-300
-                      focus:border-indigo-500'
+                      focus:border-blue-500'
                       />
                       <button
                         onClick={(ev) => deleteOption(op)}

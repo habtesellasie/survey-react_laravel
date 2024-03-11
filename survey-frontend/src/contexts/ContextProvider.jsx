@@ -4,7 +4,7 @@ import { createContext } from 'react';
 
 const StateContext = createContext({
   currentUser: {},
-  userToken: '123',
+  userToken: '',
   surveys: [],
   questionTypes: [],
   toast: {
