@@ -3,6 +3,7 @@ import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useStateContext } from '../contexts/ContextProvider';
+import PropTypes from 'prop-types';
 
 export default function QuestionEditor({
   index = 0,
@@ -21,6 +22,14 @@ export default function QuestionEditor({
   function upperCaseFirst(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
+
+  QuestionEditor.propTypes = {
+    index: PropTypes.number,
+    question: PropTypes.object,
+    addQuestion: PropTypes.func.isRequired,
+    deleteQuestion: PropTypes.func,
+    questionChange: PropTypes.func,
+  };
 
   function shouldHaveOptions(type = null) {
     type = type || model.type;
