@@ -1,78 +1,96 @@
-import { PlusCircleIcon } from '@heroicons/react/24/outline';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axiosClient from '../axios';
-import TButton from '../components/core/TButton';
-import PageComponent from '../components/PageComponent';
-import PaginationLinks from '../components/PaginationLinks';
-import SurveyListItem from '../components/SurveyListItem';
-import { useStateContext } from '../contexts/ContextProvider';
-import router from '../router';
+import PublicQuestionView from '../components/PublicQuestionView';
 
-export default function Surveys() {
-  const { showToast } = useStateContext();
-  const [surveys, setSurveys] = useState([]);
-  const [meta, setMeta] = useState({});
+export default function SurveyPublicView() {
+  const answers = {};
+  const [surveyFinished, setSurveyFinished] = useState(false);
+  const [survey, setSurvey] = useState({
+    questions: [],
+  });
   const [loading, setLoading] = useState(false);
-
-  const onDeleteClick = (id) => {
-    if (window.confirm('Are you sure you want to delete this survey?')) {
-      axiosClient.delete(`/survey/${id}`).then(() => {
-        getSurveys();
-        showToast('The survey was deleted');
-      });
-    }
-  };
-
-  const onPageClick = (link) => {
-    getSurveys(link.url);
-  };
-
-  const getSurveys = (url) => {
-    url = url || '/survey';
-    setLoading(true);
-    axiosClient.get(url).then(({ data }) => {
-      setSurveys(data.data);
-      setMeta(data.meta);
-      setLoading(false);
-    });
-  };
+  const { slug } = useParams();
 
   useEffect(() => {
-    getSurveys();
+    setLoading(true);
+    axiosClient
+      .get(`survey/get-by-slug/${slug}`)
+      .then(({ data }) => {
+        setLoading(false);
+        setSurvey(data.data);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   }, []);
 
+  function answerChanged(question, value) {
+    answers[question.id] = value;
+    console.log(question, value);
+  }
+
+  function onSubmit(ev) {
+    ev.preventDefault();
+
+    console.log(answers);
+    axiosClient
+      .post(`/survey/${survey.id}/answer`, {
+        answers,
+      })
+      .then((response) => {
+        debugger;
+        setSurveyFinished(true);
+      });
+  }
+
   return (
-    <PageComponent
-      title='Surveys'
-      buttons={
-        <TButton color='green' to='/surveys/create'>
-          <PlusCircleIcon className='h-6 w-6 mr-2' />
-          Create new
-        </TButton>
-      }
-    >
-      {loading && <div className='text-center text-lg'>Loading...</div>}
+    <div>
+      {loading && <div className='flex justify-center'>Loading..</div>}
       {!loading && (
-        <div>
-          {surveys.length === 0 && (
-            <div className='py-8 text-center text-gray-700'>
-              You don't have surveys created
+        <form onSubmit={(ev) => onSubmit(ev)} className='container mx-auto p-4'>
+          <div className='grid grid-cols-6'>
+            <div className='mr-4'>
+              <img src={survey.image_url} alt='' />
+            </div>
+
+            <div className='col-span-5'>
+              <h1 className='text-3xl mb-3'>{survey.title}</h1>
+              <p className='text-gray-500 text-sm mb-3'>
+                Expire Date: {survey.expire_date}
+              </p>
+              <p className='text-gray-500 text-sm mb-3'>{survey.description}</p>
+            </div>
+          </div>
+
+          {surveyFinished && (
+            <div className='py-8 px-6 bg-emerald-500 text-white w-[600px] mx-auto'>
+              Thank you for participating in the survey
             </div>
           )}
-          <div className='grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3'>
-            {surveys.map((survey) => (
-              <SurveyListItem
-                survey={survey}
-                key={survey.id}
-                onDeleteClick={onDeleteClick}
-              />
-            ))}
-          </div>
-          {surveys.length > 0 && (
-            <PaginationLinks meta={meta} onPageClick={onPageClick} />
+          {!surveyFinished && (
+            <>
+              <div>
+                {survey.questions.map((question, index) => (
+                  <PublicQuestionView
+                    key={question.id}
+                    question={question}
+                    index={index}
+                    answerChanged={(val) => answerChanged(question, val)}
+                  />
+                ))}
+              </div>
+              <button
+                type='submit'
+                className='inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+              >
+                Submit
+              </button>
+            </>
           )}
-        </div>
+        </form>
       )}
-    </PageComponent>
+    </div>
   );
 }

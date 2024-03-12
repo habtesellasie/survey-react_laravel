@@ -96,7 +96,7 @@ export default function Dashboard() {
             )}
             {!data.latestSurvey && (
               <div className='text-gray-600 text-center py-16'>
-                Your don't have surveys yet
+                Your don&apos;t have surveys yet
               </div>
             )}
           </DashboardCard>
