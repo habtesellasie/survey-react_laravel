@@ -87,7 +87,7 @@ export default function Dashboard() {
                     Edit Survey
                   </TButton>
 
-                  <TButton link>
+                  <TButton to={`/answer/${data.latestSurvey.id}`} link>
                     <EyeIcon className='w-5 h-5 mr-2' />
                     View Answers
                   </TButton>
@@ -127,35 +127,6 @@ export default function Dashboard() {
               </div>
             )}
           </DashboardCard>
-
-          {/* <DashboardCard
-            title='Latest Answers'
-            className='order-4 lg:order-3 row-span-2'
-            style={{ animationDelay: '0.3s' }}
-          >
-            {data.latestAnswers.length && (
-              <div className='text-left'>
-                {data.latestAnswers.map((answer) => (
-                  <a
-                    href='#'
-                    key={answer.id}
-                    className='block p-2 hover:bg-gray-100/90'
-                  >
-                    <div className='font-semibold'>{answer.survey.title}</div>
-                    <small>
-                      Answer Made at:
-                      <i className='font-semibold'>{answer.end_date}</i>
-                    </small>
-                  </a>
-                ))}
-              </div>
-            )}
-            {!data.latestAnswers.length && (
-              <div className='text-gray-600 text-center py-16'>
-                Your don't have answers yet
-              </div>
-            )}
-          </DashboardCard> */}
         </div>
       )}
     </PageComponent>

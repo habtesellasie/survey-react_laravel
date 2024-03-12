@@ -32,7 +32,6 @@ export default function Surveys() {
     setLoading(true);
     axiosClient.get(url).then(({ data }) => {
       setSurveys(data.data);
-      console.log(data);
       setMeta(data.meta);
       setLoading(false);
     });
@@ -40,10 +39,6 @@ export default function Surveys() {
 
   useEffect(() => {
     getSurveys();
-  }, []);
-
-  useEffect(() => {
-    // console.log(surveys);
   }, []);
 
   return (

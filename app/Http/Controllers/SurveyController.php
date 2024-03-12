@@ -38,6 +38,12 @@ class SurveyController extends Controller
         );
     }
 
+    public function showAnswer(Survey $survey)
+    {
+        return response()->json($survey);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
