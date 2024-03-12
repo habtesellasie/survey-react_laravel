@@ -1,4 +1,4 @@
-## Survey front end
+## Survey project
 
 ![sign up](signup.png)
 ![sign in](login.png)
